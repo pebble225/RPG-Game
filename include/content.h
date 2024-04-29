@@ -12,7 +12,7 @@ public:
 
 	content();
 
-	void init();
+	void init(int* screenDimension);
 	void Update();
 	void Render();
 

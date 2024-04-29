@@ -20,6 +20,8 @@ private:
 	GLuint sp;
 
 public:
+	int shaderu_transform, shaderu_orthographic;
+
 	ShaderProgram();
 
 	void setUniform3f(int index, float x, float y, float z);

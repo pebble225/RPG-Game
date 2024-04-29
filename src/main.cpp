@@ -18,7 +18,16 @@ int main()
 		return 1;
 	}
 
-	window = glfwCreateWindow(1600, 900, "RPG Game", NULL, NULL);
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* vmode = glfwGetVideoMode(monitor);
+	glfwWindowHint(GLFW_RED_BITS, vmode->redBits);
+	glfwWindowHint(GLFW_GREEN_BITS, vmode->greenBits);
+	glfwWindowHint(GLFW_BLUE_BITS, vmode->blueBits);
+	glfwWindowHint(GLFW_REFRESH_RATE, vmode->refreshRate);
+	
+	int screenDimension[] = {vmode->width, vmode->height};
+
+	window = glfwCreateWindow(vmode->width, vmode->height, "RPG Game", monitor, NULL);
 
 	enableglDebugFlag();
 
@@ -38,12 +47,12 @@ int main()
 
 	double lastTime = glfwGetTime();
 
-	int fps = 30;
+	int fps = 144;
 	double lastFrame = glfwGetTime();
 
 	double oneDouble = 0.99999999;
 
-	c.init();
+	c.init(screenDimension);
 
 	while (!glfwWindowShouldClose(window))
 	{
