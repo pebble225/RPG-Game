@@ -22,13 +22,17 @@ void renderer::init()
 	const int indexCount = 2;
 
 	standardMesh.init(vertices, indices, vertexCount, indexCount);
+
+	sp.init("res/shaders/defaultVertex.glsl", "res/shaders/defaultFragment.glsl");
 }
 
 void renderer::renderQuad()
 {
+	sp.use();
 	standardMesh.bindVAO();
 	standardMesh.draw();
 	standardMesh.unbindVAO();
+	glUseProgram(0);
 }
 
 renderer::~renderer()

@@ -2,11 +2,13 @@
 #define _RENDERER_H_
 
 #include "mesh.h"
+#include "ShaderProgram.h"
 
 class renderer
 {
 public:
 	Mesh standardMesh;
+	ShaderProgram sp;
 
 	renderer();
 
