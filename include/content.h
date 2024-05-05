@@ -8,7 +8,6 @@
 #include "worldGen/heightmap.h"
 
 #include "pebbleimgrenderer.h"
-#include "PerlinNoise.hpp"
 
 class content
 {

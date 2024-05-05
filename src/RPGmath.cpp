@@ -7,3 +7,8 @@ int RPGmath::intBound(int value, int min, int max)
 
 	return value;
 }
+
+double RPGmath::minDouble(const double a, const double b)
+{
+	return a < b ? a : b;
+}

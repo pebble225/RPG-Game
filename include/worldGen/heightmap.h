@@ -1,7 +1,6 @@
 #ifndef _HEIGHTMAP_H_
 #define _HEIGHTMAP_H_
 
-#include "PerlinNoise.hpp"
 #include "../utility/RPGmath.h"
 
 #include <iostream>
