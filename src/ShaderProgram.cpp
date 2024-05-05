@@ -1,4 +1,4 @@
-#include "ShaderProgram.h"
+#include "rendering/ShaderProgram.h"
 
 std::string ShaderProgram::writeCode(std::string src)
 {
@@ -48,10 +48,6 @@ GLuint ShaderProgram::createShader(std::string src, const GLuint type)
 	{
 		glGetShaderInfoLog(shader, 512, NULL, infoLog);
 		std::cout << "Error when compiling \"" << src << "\":" << infoLog << std::endl;
-	}
-	else
-	{
-		std::cout << "Shader successfully compiled." << std::endl;
 	}
 
 	return shader;

@@ -1,4 +1,4 @@
-#include "RPGmath.h"
+#include "utility/RPGmath.h"
 
 int RPGmath::intBound(int value, int min, int max)
 {

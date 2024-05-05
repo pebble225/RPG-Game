@@ -2,7 +2,7 @@
 #define _HEIGHTMAP_H_
 
 #include "PerlinNoise.hpp"
-#include "RPGmath.h"
+#include "../utility/RPGmath.h"
 
 #include <iostream>
 #include <memory>

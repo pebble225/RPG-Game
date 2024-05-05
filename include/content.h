@@ -4,8 +4,8 @@
 #include <GL/glew.h>
 #include <algorithm>
 
-#include "renderer.h"
-#include "heightmap.h"
+#include "rendering/renderer.h"
+#include "worldGen/heightmap.h"
 
 #include "pebbleimgrenderer.h"
 #include "PerlinNoise.hpp"

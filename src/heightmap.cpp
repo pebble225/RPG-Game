@@ -1,4 +1,4 @@
-#include "heightmap.h"
+#include "worldGen/heightmap.h"
 
 heightmap::heightmap(int w, int h) : width(w), height(h)
 {
