@@ -23,6 +23,11 @@ public:
 
 	void init(int* screenDimension);
 
+	void init()
+	{
+		std::cout << "code ran\n";
+	}
+
 	void renderQuad(float x, float y);
 
 	~renderer();

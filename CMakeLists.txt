@@ -8,6 +8,9 @@ add_executable(${PROJECT_NAME}
 	src/renderer.cpp
 	src/mesh.cpp
 	src/ShaderProgram.cpp
+	src/heightmap.cpp
+	src/RPGmath.cpp
+	dep/ignore/pebbleimgrenderer.cpp
 )
 
 add_subdirectory(dep/glfw)
@@ -20,10 +23,13 @@ add_definitions(-D_DEBUG)
 target_include_directories(${PROJECT_NAME}
 	PUBLIC include
 	PUBLIC dep/stb
+	PUBLIC dep/ignore
+	PUBLIC dep/PerlinNoise
 )
 
 target_link_libraries(${PROJECT_NAME}
 	glfw
 	libglew_static
 	glm
+	m
 )

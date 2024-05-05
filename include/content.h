@@ -2,13 +2,20 @@
 #define _CONTENT_H_
 
 #include <GL/glew.h>
+#include <algorithm>
 
 #include "renderer.h"
+#include "heightmap.h"
+
+#include "pebbleimgrenderer.h"
+#include "PerlinNoise.hpp"
 
 class content
 {
 public:
 	renderer r;
+
+	imagerenderer ir;
 
 	content();
 

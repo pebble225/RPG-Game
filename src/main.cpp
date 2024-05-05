@@ -54,7 +54,7 @@ int main()
 
 	c.init(screenDimension);
 
-	while (!glfwWindowShouldClose(window))
+	while (false)// (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 
