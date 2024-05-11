@@ -2,10 +2,13 @@
 #define _HEIGHTMAP_H_
 
 #include "../utility/RPGmath.h"
+#include "../utility/RPGrandom.h"
 
 #include <iostream>
 #include <memory>
 #include <cstdio>
+#include <vector>
+#include <cmath>
 
 /*
 
@@ -23,9 +26,16 @@ private:
 std::unique_ptr<float[]> data;
 int width, height;
 long arr_len;
+bool allocateGuard;
 
 public:
+	heightmap();
 	heightmap(int w, int h);
+
+	//please only run this once per heightmap
+	void allocate(int w, int h);
+
+	bool isAllocated() const;
 
 	int getWidth() const;
 	int getHeight() const;
@@ -33,6 +43,13 @@ public:
 	float at(int x, int y) const;
 
 	void fill(float n);
+	void fillNoise(RPGrandom* r);
+
+	void fillPerlinNoise(RPGrandom* r, int octaves, float bias);
+
+	void fillGravityPoints(std::vector<int>* points, double size);
+
+	void fillMapLerp(heightmap* hm1, heightmap* hm2, float f);
 
 	void set(float n, int x, int y);
 

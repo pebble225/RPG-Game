@@ -10,6 +10,7 @@ add_executable(${PROJECT_NAME}
 	src/ShaderProgram.cpp
 	src/heightmap.cpp
 	src/RPGmath.cpp
+	src/RPGrandom.cpp
 	dep/ignore/pebbleimgrenderer.cpp
 )
 

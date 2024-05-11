@@ -3,8 +3,13 @@
 
 #include <GL/glew.h>
 #include <algorithm>
+#include <cmath>
+#include <vector>
 
 #include "rendering/renderer.h"
+
+#include "utility/RPGrandom.h"
+
 #include "worldGen/heightmap.h"
 
 #include "pebbleimgrenderer.h"
