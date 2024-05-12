@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 
+//functional blueprint
 class ShaderProgram
 {
 private:

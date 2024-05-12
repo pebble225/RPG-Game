@@ -11,6 +11,8 @@ add_executable(${PROJECT_NAME}
 	src/heightmap.cpp
 	src/RPGmath.cpp
 	src/RPGrandom.cpp
+	src/worldGenerator.cpp
+	src/fileHandler.cpp
 	dep/ignore/pebbleimgrenderer.cpp
 )
 

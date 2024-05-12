@@ -19,6 +19,7 @@ bless c++ for smart pointers I will become the smart
 
 */
 
+//functional blueprint
 class heightmap
 {
 private:
@@ -45,8 +46,10 @@ public:
 	void fill(float n);
 	void fillNoise(RPGrandom* r);
 
+	//replace this with OpenSimplex in the future to reduce artifacts
 	void fillPerlinNoise(RPGrandom* r, int octaves, float bias);
 
+	//this function is slow and inefficient. Future optimization might be useful
 	void fillGravityPoints(std::vector<int>* points, double size);
 
 	void fillMapLerp(heightmap* hm1, heightmap* hm2, float f);

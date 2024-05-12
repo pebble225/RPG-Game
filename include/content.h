@@ -6,14 +6,20 @@
 #include <cmath>
 #include <vector>
 
+#include "gameInstance/SimpleTile.h"
+
+#include "fileHandling/fileHandler.h"
+
 #include "rendering/renderer.h"
 
 #include "utility/RPGrandom.h"
 
 #include "worldGen/heightmap.h"
+#include "worldGen/worldGenerator.h"
 
 #include "pebbleimgrenderer.h"
 
+//overhead
 class content
 {
 public:

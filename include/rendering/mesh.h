@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 
+//functional blueprint
 class Mesh
 {
 private:

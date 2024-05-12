@@ -4,6 +4,7 @@
 #include <random>
 #include <ctime>
 
+//functional blueprint
 class RPGrandom
 {
 private:

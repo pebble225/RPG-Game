@@ -9,6 +9,7 @@
 #include "mesh.h"
 #include "ShaderProgram.h"
 
+//mixed operator
 class renderer
 {
 public:
