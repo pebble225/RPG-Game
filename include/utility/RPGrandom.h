@@ -11,11 +11,15 @@ private:
 	std::mt19937 mt;
 public:
 	RPGrandom();
-	RPGrandom(unsigned int seed);
+
+	void init();
+	void init(unsigned int seed);
 
 	unsigned int nextInt();
 
 	double nextDouble();
+
+	~RPGrandom();
 };
 
 #endif

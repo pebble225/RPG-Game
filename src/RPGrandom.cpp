@@ -1,11 +1,13 @@
 #include "utility/RPGrandom.h"
 
-RPGrandom::RPGrandom()
+RPGrandom::RPGrandom() {}
+
+void RPGrandom::init()
 {
 	mt.seed(time(0));
 }
 
-RPGrandom::RPGrandom(unsigned int seed)
+void RPGrandom::init(unsigned int seed)
 {
 	mt.seed(seed);
 }
@@ -19,3 +21,5 @@ double RPGrandom::nextDouble()
 {
 	return (double)mt() / (double)mt.max();
 }
+
+RPGrandom::~RPGrandom() {}

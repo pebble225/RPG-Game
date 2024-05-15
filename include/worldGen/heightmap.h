@@ -8,6 +8,7 @@
 #include <memory>
 #include <cstdio>
 #include <vector>
+#include <list>
 #include <cmath>
 
 /*
@@ -23,11 +24,11 @@ bless c++ for smart pointers I will become the smart
 class heightmap
 {
 private:
-//is an array the best practice for heap or are vectors better?
 std::unique_ptr<float[]> data;
 int width, height;
 long arr_len;
 bool allocateGuard;
+RPGrandom rng;
 
 public:
 	heightmap();
@@ -37,6 +38,11 @@ public:
 	void allocate(int w, int h);
 
 	bool isAllocated() const;
+
+	void initRNG(unsigned int seed);
+	void addPerlinJob(float octaves, float bias);
+	void addPerlinInterpolateTask(int x, int y, float octaves, float bias);
+	void iteratePerlinTask();
 
 	int getWidth() const;
 	int getHeight() const;

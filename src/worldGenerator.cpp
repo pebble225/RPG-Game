@@ -1,8 +1,19 @@
 #include "worldGen/worldGenerator.h"
 
-void worldGenerator::generate(unsigned int seed)
+worldGenerator::worldGenerator() {}
+
+void worldGenerator::generate(unsigned int seed, std::atomic<std::shared_ptr<bool>> status)
 {
-	RPGrandom ran(seed);
+	thread = std::make_unique<std::thread>(run, seed, status);
+	thread->detach();
+}
+
+void worldGenerator::run(unsigned int seed, std::atomic<bool>* status)
+{
+	std::cout << "Generating...\n";
+
+	RPGrandom ran;
+	ran.init(seed);
 
 	int worldWidth = 4096;
 	int worldHeight = 2048;
@@ -47,4 +58,8 @@ void worldGenerator::generate(unsigned int seed)
 			fileHandler::writeChunkFile(x, y, arr.get());
 		}
 	}
+
+	std::cout << "Generating complete.\n";
 }
+
+worldGenerator::~worldGenerator() {}

@@ -20,14 +20,14 @@ int main()
 	
 	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode* vmode = glfwGetVideoMode(monitor);
-	/*
+	
 	glfwWindowHint(GLFW_RED_BITS, vmode->redBits);
 	glfwWindowHint(GLFW_GREEN_BITS, vmode->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, vmode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, vmode->refreshRate);
-	*/
+	
 	int screenDimension[] = {vmode->width, vmode->height};
-	/*
+	
 	window = glfwCreateWindow(vmode->width, vmode->height, "RPG Game", monitor, NULL);
 
 	enableglDebugFlag();
@@ -41,7 +41,7 @@ int main()
 	}
 
 	enableglDebug();
-	*/
+	
 	int tps = 60;
 
 	double delta = 0.0;
@@ -55,7 +55,7 @@ int main()
 
 	c.init(NULL);
 
-	while (false)// (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 

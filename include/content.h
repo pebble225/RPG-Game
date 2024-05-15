@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include <algorithm>
+#include <memory>
 #include <cmath>
 #include <vector>
 
@@ -23,6 +24,10 @@
 class content
 {
 public:
+	worldGenerator wg;
+
+	std::atomic<std::shared_ptr<bool>> worldGenStatus;
+
 	renderer r;
 
 	imagerenderer ir;
