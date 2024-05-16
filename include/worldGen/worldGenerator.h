@@ -5,6 +5,7 @@
 #include <atomic>
 #include <thread>
 #include <vector>
+#include <mutex>
 
 #include "heightmap.h"
 #include "../utility/RPGrandom.h"
@@ -13,17 +14,33 @@
 
 #define GENERATORVALUE_LANDTHRESHOLD 0.5f
 
-//strict operator
+//threaded operator
 class worldGenerator
 {
+private:
+	std::atomic<bool> running;
+	std::atomic<unsigned int> seed;
+	std::atomic<bool> generatingWorld;
+
 public:
-	static void run(unsigned int seed, std::atomic<std::shared_ptr<bool>> status);
+	std::thread t;
+	std::mutex mtx;
+
 	worldGenerator();
-
-	std::unique_ptr<std::thread> thread;
-
-	void generate(unsigned int seed, std::atomic<std::shared_ptr<bool>> status);
+	void run();
 	
+	void setRunning(bool v);
+	bool getRunning() const;
+
+	void setGeneratingWorld(bool v);
+	bool getGeneratingWorld() const;
+
+	void setSeed(unsigned int v);
+	unsigned int getSeed() const;
+
+	void orderGenerate();
+	void privateGenerate(unsigned int seed);
+
 	~worldGenerator();
 };
 

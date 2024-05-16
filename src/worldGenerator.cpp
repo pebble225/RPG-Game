@@ -1,17 +1,66 @@
 #include "worldGen/worldGenerator.h"
 
-worldGenerator::worldGenerator() {}
-
-void worldGenerator::generate(unsigned int seed, std::atomic<std::shared_ptr<bool>> status)
+worldGenerator::worldGenerator()
 {
-	thread = std::make_unique<std::thread>(run, seed, status);
-	thread->detach();
+	t = std::thread(&worldGenerator::run, this);
+	setRunning(true);
+	setGeneratingWorld(false);
+	t.detach();
 }
 
-void worldGenerator::run(unsigned int seed, std::atomic<bool>* status)
+void worldGenerator::run()
 {
-	std::cout << "Generating...\n";
+	while(getRunning())
+	{
+		if (getGeneratingWorld())
+		{
+			privateGenerate(getSeed());
+			setGeneratingWorld(false);
+		}
+	}
+}
 
+void worldGenerator::setRunning(bool v)
+{
+	std::lock_guard<std::mutex> lock(mtx);
+	running.store(v);
+}
+
+bool worldGenerator::getRunning() const
+{
+	return running.load();
+}
+
+void worldGenerator::setGeneratingWorld(bool v)
+{
+	std::lock_guard<std::mutex> lock(mtx);
+	generatingWorld.store(v);
+}
+
+bool worldGenerator::getGeneratingWorld() const
+{
+	return generatingWorld.load();
+}
+
+void worldGenerator::setSeed(unsigned int v)
+{
+	std::lock_guard<std::mutex> lock(mtx);
+
+	seed.store(v);
+}
+
+unsigned int worldGenerator::getSeed() const
+{
+	return seed;
+}
+
+void worldGenerator::orderGenerate()
+{
+	setGeneratingWorld(true);
+}
+
+void worldGenerator::privateGenerate(unsigned int seed)
+{
 	RPGrandom ran;
 	ran.init(seed);
 
@@ -58,8 +107,9 @@ void worldGenerator::run(unsigned int seed, std::atomic<bool>* status)
 			fileHandler::writeChunkFile(x, y, arr.get());
 		}
 	}
-
-	std::cout << "Generating complete.\n";
 }
 
-worldGenerator::~worldGenerator() {}
+worldGenerator::~worldGenerator()
+{
+	setRunning(false);
+}

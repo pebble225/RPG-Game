@@ -5,8 +5,6 @@ content::content()
 	
 }
 
-SimpleTile arr[4096];
-
 void content::init(int* screenDimension)
 {
 	r.init(screenDimension);
@@ -14,11 +12,8 @@ void content::init(int* screenDimension)
 	fileHandler::checkDirectory("./world");
 	fileHandler::checkDirectory("./world/chunkData");
 
-	std::shared_ptr<bool> intialStatus = std::make_shared<bool>(false);
-
-	worldGenStatus.store(intialStatus);
-
-	wg.generate(5664168, worldGenStatus.get());
+	wg.setSeed(5346782);
+	wg.orderGenerate();
 }
 
 void content::Update()

@@ -18,19 +18,13 @@
 #include "worldGen/heightmap.h"
 #include "worldGen/worldGenerator.h"
 
-#include "pebbleimgrenderer.h"
-
 //overhead
 class content
 {
 public:
 	worldGenerator wg;
 
-	std::atomic<std::shared_ptr<bool>> worldGenStatus;
-
 	renderer r;
-
-	imagerenderer ir;
 
 	content();
 
