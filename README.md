@@ -14,7 +14,7 @@ You'll be installing a bunch of packages.
 
 `sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev`
 
-In vs code open the project folder and run:
+In vs code install the "C/C++ Extension Pack" from the store and then open the project folder and run:
 
 `git submodule init` and `git submodule update`
 
