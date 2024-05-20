@@ -16,10 +16,19 @@ void content::init(int* screenDimension, GLFWwindow* window)
 	fileHandler::checkDirectory("./world");
 	fileHandler::checkDirectory("./world/chunkData");
 
-	wg.setSeed(5346782);
-	wg.orderGenerate();
+	//wg.setSeed(5346782);
+	//wg.orderGenerate();
 
-	
+	HorizontalWrappedTransform t(360);
+
+	std::cout << t.getX() << "\n";
+	t.translateX(5.0);
+	std::cout << t.getX() << "\n";
+	t.translateX(5.0);
+	std::cout << t.getX() << "\n";
+	t.translateX(5.0);
+	std::cout << t.getX() << "\n";
+	t.translateX(5.0);
 }
 
 void content::Update()

@@ -5,7 +5,7 @@ digraph g {
 
 	main -> content
 
-	content -> {SimpleTile, chunkData, fileHandler, renderer, RPGrandom, heightmap, worldGenerator, chunkInstanceDB}
+	content -> {SimpleTile, chunkData, fileHandler, renderer, RPGrandom, heightmap, worldGenerator, chunkInstanceDB, Camera}
 
 	chunkData -> {SimpleTile, fileHandler}
 

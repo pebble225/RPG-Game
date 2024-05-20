@@ -16,6 +16,8 @@ add_executable(${PROJECT_NAME}
 	src/chunkData.cpp
 	src/chunkInstanceDB.cpp
 	src/Camera.cpp
+	src/HorizontalWrappedTransform.cpp
+	src/Vec2D.cpp
 )
 
 add_subdirectory(dep/glfw)
