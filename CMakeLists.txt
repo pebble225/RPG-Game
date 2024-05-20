@@ -13,6 +13,9 @@ add_executable(${PROJECT_NAME}
 	src/RPGrandom.cpp
 	src/worldGenerator.cpp
 	src/fileHandler.cpp
+	src/chunkData.cpp
+	src/chunkInstanceDB.cpp
+	src/Camera.cpp
 )
 
 add_subdirectory(dep/glfw)

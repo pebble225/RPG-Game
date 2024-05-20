@@ -25,6 +25,33 @@ int fileHandler::writeChunkFile(int x, int y, SimpleTile* arr)
 	return 0;
 }
 
+int fileHandler::loadChunkFile(int x, int y, std::vector<SimpleTile>* arr)
+{
+	std::ostringstream oss;
+
+	oss << "./world/chunkData/x" << x << "y" << y << ".chunkdata";
+
+	std::string directory = oss.str();
+
+	std::ifstream file(directory, std::ios::in|std::ios::binary);
+
+	if (file.is_open())
+	{
+		SimpleTile tileData;
+
+		while (file.read(reinterpret_cast<char*>(&tileData), sizeof(tileData)))
+		{
+			arr->push_back(tileData);
+		}
+
+		file.close();
+	}
+	else
+		return 1;
+
+	return 0;
+}
+
 bool fileHandler::folderExists(const std::string dir)
 {
 	char dir_cstr[1024];

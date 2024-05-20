@@ -53,7 +53,7 @@ int main()
 
 	double oneDouble = 0.99999999;
 
-	c.init(screenDimension);
+	c.init(screenDimension, window);
 
 	while (!glfwWindowShouldClose(window))
 	{
