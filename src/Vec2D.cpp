@@ -4,9 +4,20 @@ Vec2D::Vec2D() : x(1.0), y(0.0) {}
 
 Vec2D::Vec2D(double x, double y) : x(x), y(y) {}
 
+void Vec2D::setFromAngle(double angle)
+{
+	x = std::cos(angle * M_PI / 180.0);
+	y = std::sin(angle * M_PI / 180.0);
+}
+
 double Vec2D::dotProduct(Vec2D* v) const
 {
 	return x * v->x + y * v->y;
+}
+
+double Vec2D::dotDifference(Vec2D* v) const
+{
+	return x * v->x - y * v->y;
 }
 
 double Vec2D::crossProduct(Vec2D* v) const
@@ -41,21 +52,12 @@ void Vec2D::normalizeTarget(Vec2D* target) const
 	target->y = y / mag;
 }
 
-void Vec2D::rotate(Vec2D* a, Vec2D* b)
+void Vec2D::rotate(Vec2D* change)
 {
-	double cosTheta = a->dotProduct(b);
-	double theta = std::acos(cosTheta);
+	double x2 = x;
 
-	double direction = a->crossProduct(b);
-	if (direction < 0)
-		theta = -theta;
-	
-	x = a->x * std::cos(theta) - a->y * std::sin(theta);
-	y = a->x * std::sin(theta) + a->y * std::cos(theta);
-
-	//these values appear to need to be converted but pebble is sleepy
-
-	normalize();
+	x = x * change->x - y * change->y;
+	y = x2 * change->y + y * change->x;
 }
 
 Vec2D::~Vec2D() {}

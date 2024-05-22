@@ -28,7 +28,9 @@ double HorizontalWrappedTransform::getX()
 {
 	double angle = atan2(x.y, x.x);
 
-	return angle < 0 ? angle + M_PI*2 : angle;
+	angle = angle < 0 ? angle + M_PI*2 : angle;
+
+	return (angle / (2*M_PI)) * width;
 }
 
 void HorizontalWrappedTransform::translateY(double y)
@@ -41,15 +43,13 @@ void HorizontalWrappedTransform::translateX(double x)
 	//also consider supporting wrapping in the future for that big zoom
 	x = x > width ? width : x;
 	x = x < -width ? -width : x;
-	x = x < 0 ? x + M_PI*2 : x;
 
 	double radian = x / width * (M_PI * 2);
 
-	Vec2D vec(cos(radian), sin(radian));
-	Vec2D copy_vec;
-	this->x.clone(&copy_vec);
+	Vec2D vec(std::cos(radian), std::sin(radian));
 
-	this->x.rotate(&copy_vec, &vec);
+	this->x.rotate(&vec);
+	this->x.normalize();
 }
 
 HorizontalWrappedTransform::~HorizontalWrappedTransform() {}

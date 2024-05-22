@@ -11,7 +11,10 @@ public:
 	Vec2D();
 	Vec2D(double x, double y);
 
+	void setFromAngle(double angle);
+
 	double dotProduct(Vec2D* v) const;
+	double dotDifference(Vec2D* v) const;
 	double crossProduct(Vec2D* v) const;
 	double magnitude() const;
 	
@@ -20,7 +23,7 @@ public:
 	void normalize();
 	void normalizeTarget(Vec2D* target) const;
 
-	void rotate(Vec2D* a, Vec2D* b);
+	void rotate(Vec2D* change);
 
 	~Vec2D();
 };

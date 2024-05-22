@@ -2,6 +2,7 @@
 #define _HORIZINTALWRAPPEDTRANSFORM_H_
 
 #include <cmath>
+#include <iostream>
 
 #include "Vec2D.h"
 

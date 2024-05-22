@@ -58,6 +58,12 @@
 		"semaphore": "cpp",
 		"stop_token": "cpp",
 		"thread": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"charconv": "cpp",
+		"condition_variable": "cpp",
+		"optional": "cpp",
+		"format": "cpp",
+		"mutex": "cpp",
+		"variant": "cpp"
 	}
 }
