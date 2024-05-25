@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME} src/main.cpp
 	src/RPGcamera.cpp
 	src/HorizontalWrappedTransform.cpp
 	src/Vec2D.cpp
+	src/XModularTransform.cpp
 )
 
 
@@ -32,7 +33,6 @@ add_definitions(-D_DEBUG)
 target_include_directories(${PROJECT_NAME}
 	PUBLIC include
 	PUBLIC dep/stb
-	PUBLIC dep/ignore
 	PUBLIC dep/PerlinNoise
 )
 
@@ -48,6 +48,7 @@ target_link_libraries(${PROJECT_NAME}
 add_executable(tests
 		tests/test.cpp
 		src/Vec2D.cpp
+		src/XModularTransform.cpp
 )
 target_include_directories(tests PUBLIC include)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)

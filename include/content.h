@@ -20,6 +20,7 @@
 
 #include "utility/RPGrandom.h"
 #include "utility/HorizonalWrappedTransform.h"
+#include "utility/XModularTransform.h"
 
 #include "worldGen/heightmap.h"
 #include "worldGen/worldGenerator.h"
