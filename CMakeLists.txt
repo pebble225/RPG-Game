@@ -21,7 +21,6 @@ add_executable(${PROJECT_NAME} src/main.cpp
 	src/Vec2D.cpp
 )
 
-add_executable(tests src/test.cpp)
 
 add_subdirectory(dep/glfw)
 add_subdirectory(dep/glew-cmake)
@@ -44,4 +43,16 @@ target_link_libraries(${PROJECT_NAME}
 	m
 )
 
+
+# Unit tests
+add_executable(tests
+		tests/test.cpp
+		src/Vec2D.cpp
+)
+target_include_directories(tests PUBLIC include)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+
+include(CTest)
+include(Catch)
+catch_discover_tests(tests)
+
