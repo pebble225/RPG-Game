@@ -1,4 +1,4 @@
-#ifndef _HORIZONTALWRAPPEDTRANSFORM_H_
+#ifndef _HORIZINTALWRAPPEDTRANSFORM_H_
 #define _HORIZINTALWRAPPEDTRANSFORM_H_
 
 #include <cmath>
@@ -6,16 +6,8 @@
 
 #include "Vec2D.h"
 
-/*
 
-The world exists on a globe and I intend for the player to be able to seemlessely translate between
-the very left and right of the map. In order to accomplish this, the x position is going to be
-stored as a unit vector. This reduces the complexity of distance operations and other position
-functions in order to avoid messy code involving any kind of wrapping.
-
-The large the world size gets, the less accurate the x value becomes.
-
-*/
+//Semi-Modular transform used to wrap transforms around the x axis
 
 class HorizontalWrappedTransform
 {

@@ -18,11 +18,16 @@ void content::init(int* screenDimension, GLFWwindow* window)
 
 	//wg.setSeed(5346782);
 	//wg.orderGenerate();
+
+	camera = std::make_shared<RPGcamera>(screenDimension[0]);
 }
 
 void content::Update()
 {
-	
+	if (chunkData::monitorChunkCounter())
+	{
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
 }
 
 void content::Render()

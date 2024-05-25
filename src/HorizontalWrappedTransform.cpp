@@ -1,7 +1,7 @@
 #include "utility/HorizonalWrappedTransform.h"
 
 HorizontalWrappedTransform::HorizontalWrappedTransform(double width)
-	: y(0.0), width(width) {}
+	: x(), y(0.0), width(width) {}
 
 void HorizontalWrappedTransform::setY(double y)
 {

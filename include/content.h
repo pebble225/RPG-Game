@@ -12,7 +12,7 @@
 #include "gameInstance/SimpleTile.h"
 #include "gameInstance/chunkData.h"
 #include "gameInstance/chunkInstanceDB.h"
-#include "gameInstance/Camera.h"
+#include "gameInstance/RPGcamera.h"
 
 #include "fileHandling/fileHandler.h"
 
@@ -31,6 +31,7 @@ public:
 	GLFWwindow* window;
 
 	std::shared_ptr<chunkInstanceDB> cidb;
+	std::shared_ptr<RPGcamera> camera;
 
 	worldGenerator wg;
 
@@ -39,6 +40,9 @@ public:
 	content();
 
 	void init(int* screenDimension, GLFWwindow* window);
+
+
+
 	void Update();
 	void Render();
 

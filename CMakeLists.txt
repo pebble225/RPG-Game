@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.22.0)
 
 project(RPG-Game)
 
-add_executable(${PROJECT_NAME}
-	src/main.cpp
+find_package(Catch2 3 REQUIRED)
+
+add_executable(${PROJECT_NAME} src/main.cpp
 	src/content.cpp
 	src/renderer.cpp
 	src/mesh.cpp
@@ -15,10 +16,12 @@ add_executable(${PROJECT_NAME}
 	src/fileHandler.cpp
 	src/chunkData.cpp
 	src/chunkInstanceDB.cpp
-	src/Camera.cpp
+	src/RPGcamera.cpp
 	src/HorizontalWrappedTransform.cpp
 	src/Vec2D.cpp
 )
+
+add_executable(tests src/test.cpp)
 
 add_subdirectory(dep/glfw)
 add_subdirectory(dep/glew-cmake)
@@ -40,3 +43,5 @@ target_link_libraries(${PROJECT_NAME}
 	glm
 	m
 )
+
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
