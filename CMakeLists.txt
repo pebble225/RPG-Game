@@ -17,7 +17,6 @@ add_executable(${PROJECT_NAME} src/main.cpp
 	src/chunkData.cpp
 	src/chunkInstanceDB.cpp
 	src/RPGcamera.cpp
-	src/HorizontalWrappedTransform.cpp
 	src/Vec2D.cpp
 	src/MapPoint.cpp
 )

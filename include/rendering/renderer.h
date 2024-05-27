@@ -11,6 +11,7 @@
 #include "mesh.h"
 #include "ShaderProgram.h"
 #include "../gameInstance/RPGcamera.h"
+#include "../utility/Vec2D.h"
 
 //mixed operator
 class renderer
