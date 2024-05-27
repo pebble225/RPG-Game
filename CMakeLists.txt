@@ -19,7 +19,7 @@ add_executable(${PROJECT_NAME} src/main.cpp
 	src/RPGcamera.cpp
 	src/HorizontalWrappedTransform.cpp
 	src/Vec2D.cpp
-	src/XModularTransform.cpp
+	src/MapPoint.cpp
 )
 
 
@@ -48,7 +48,7 @@ target_link_libraries(${PROJECT_NAME}
 add_executable(tests
 		tests/test.cpp
 		src/Vec2D.cpp
-		src/XModularTransform.cpp
+		src/MapPoint.cpp
 )
 target_include_directories(tests PUBLIC include)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)

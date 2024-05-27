@@ -20,6 +20,7 @@ void content::init(int* screenDimension, GLFWwindow* window)
 	//wg.orderGenerate();
 
 	camera = std::make_shared<RPGcamera>(screenDimension[0]);
+	r.shareCameraReference(camera);
 }
 
 void content::Update()

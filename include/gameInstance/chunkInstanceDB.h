@@ -17,7 +17,7 @@ there should only be once instance of this class
 class chunkInstanceDB
 {
 private:
-	std::vector<std::shared_ptr<chunkData>> chunks;
+	std::vector<std::unique_ptr<chunkData>> chunks;
 public:
 	chunkInstanceDB();
 

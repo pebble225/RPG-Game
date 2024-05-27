@@ -1,14 +1,14 @@
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
 
-#include "../utility/HorizonalWrappedTransform.h"
+#include "../utility/MapPoint.h"
 
 class RPGcamera
 {
 public:
-	HorizontalWrappedTransform transform;
+	MapPoint position;
 
-	RPGcamera(double transform);
+	RPGcamera(double width);
 
 	~RPGcamera();
 };

@@ -9,6 +9,7 @@ public:
 	double x, y;
 
 	Vec2D();
+	Vec2D(double n);
 	Vec2D(double x, double y);
 
 	void setFromAngle(double angle);

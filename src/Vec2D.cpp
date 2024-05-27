@@ -2,6 +2,8 @@
 
 Vec2D::Vec2D() : x(1.0), y(0.0) {}
 
+Vec2D::Vec2D(double n) : x(n), y(n) {}
+
 Vec2D::Vec2D(double x, double y) : x(x), y(y) {}
 
 void Vec2D::setFromAngle(double angle)

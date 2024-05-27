@@ -4,10 +4,13 @@
 #include <GL/glew.h>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
+#include <memory>
 
 
 #include "mesh.h"
 #include "ShaderProgram.h"
+#include "../gameInstance/RPGcamera.h"
 
 //mixed operator
 class renderer
@@ -20,14 +23,13 @@ public:
 
 	int* screenDimension;
 
+	std::shared_ptr<RPGcamera> camera;
+
 	renderer();
 
 	void init(int* screenDimension);
 
-	void init()
-	{
-		std::cout << "code ran\n";
-	}
+	void shareCameraReference(std::shared_ptr<RPGcamera> camera);
 
 	void renderQuad(float x, float y);
 

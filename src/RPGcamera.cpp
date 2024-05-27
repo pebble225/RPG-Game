@@ -1,6 +1,6 @@
 #include "gameInstance/RPGcamera.h"
 
 RPGcamera::RPGcamera(double width)
-	: transform(width) {}
+	: position(width) {}
 
 RPGcamera::~RPGcamera() {}

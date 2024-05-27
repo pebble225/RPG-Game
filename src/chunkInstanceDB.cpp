@@ -19,7 +19,7 @@ bool chunkInstanceDB::checkForChunk(int x, int y)
 
 void chunkInstanceDB::loadChunkToInstance(int x, int y)
 {
-	chunks.emplace_back(std::make_shared<chunkData>());
+	chunks.push_back(std::make_unique<chunkData>());
 	chunkData* cd = chunks.back().get();
 	cd->init(x, y);
 	//cd->loadFromFile();
