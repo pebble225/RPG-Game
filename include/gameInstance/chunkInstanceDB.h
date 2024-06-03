@@ -17,11 +17,14 @@ there should only be once instance of this class
 class chunkInstanceDB
 {
 private:
-	std::vector<std::unique_ptr<chunkData>> chunks;
+	std::vector<chunkData> chunks;
 public:
 	chunkInstanceDB();
 
 	bool checkForChunk(int x, int y);
+	
+
+	int totalLoadedChunks() const;
 	
 	void loadChunkToInstance(int x, int y);
 	void freeChunkFromInstance(int x, int y);
@@ -30,5 +33,7 @@ public:
 
 	~chunkInstanceDB();
 };
+
+extern chunkInstanceDB CHUNKINSTANCE_DB;
 
 #endif

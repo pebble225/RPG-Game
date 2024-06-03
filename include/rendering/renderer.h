@@ -12,6 +12,8 @@
 #include "ShaderProgram.h"
 #include "../gameInstance/RPGcamera.h"
 #include "../utility/Vec2D.h"
+#include "../gameInstance/chunkInstanceDB.h"
+#include "../gameInstance/chunkData.h"
 
 //mixed operator
 class renderer
@@ -24,13 +26,14 @@ public:
 
 	int* screenDimension;
 
-	std::shared_ptr<RPGcamera> camera;
+	chunkInstanceDB* cidb;
+	RPGcamera* camera;
 
 	renderer();
 
 	void init(int* screenDimension);
 
-	void shareCameraReference(std::shared_ptr<RPGcamera> camera);
+	void renderAllChunks();
 
 	void renderQuad(float x, float y);
 

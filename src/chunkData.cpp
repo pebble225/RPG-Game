@@ -12,8 +12,6 @@ void chunkData::init(int x, int y)
 {
     this->x = x;
     this->y = y;
-
-    tiles = std::make_unique<std::vector<SimpleTile>>();
 }
 
 void chunkData::loadFromFile()
@@ -21,7 +19,7 @@ void chunkData::loadFromFile()
     if (loaded)
         return;
 
-    if (fileHandler::loadChunkFile(x, y, tiles.get()) == FILE_LOAD_OKAY)
+    if (fileHandler::loadChunkFile(x, y, &tiles) == FILE_LOAD_OKAY)
     {
         loaded = true;
     }

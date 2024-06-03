@@ -8,7 +8,7 @@ bool chunkInstanceDB::checkForChunk(int x, int y)
 
 	for (int i = 0; i < chunks.size(); i++)
 	{
-		chunkData* cd = chunks.at(i).get();
+		chunkData* cd = &chunks.at(i);
 
 		if (x == cd->x && y == cd->y)
 			hit = true;
@@ -17,10 +17,15 @@ bool chunkInstanceDB::checkForChunk(int x, int y)
 	return hit;
 }
 
+int chunkInstanceDB::totalLoadedChunks() const
+{
+	return chunks.size();
+}
+
 void chunkInstanceDB::loadChunkToInstance(int x, int y)
 {
-	chunks.push_back(std::make_unique<chunkData>());
-	chunkData* cd = chunks.back().get();
+	chunks.emplace_back();
+	chunkData* cd = &chunks.back();
 	cd->init(x, y);
 	//cd->loadFromFile();
 }
@@ -39,7 +44,7 @@ int chunkInstanceDB::indexOfChunkCoordinate(int x, int y)
 {
 	for (int i = 0; i < chunks.size(); i++)
 	{
-		chunkData* cd = chunks.at(i).get();
+		chunkData* cd = &chunks.at(i);
 
 		if (x == cd->x && y == cd->y)
 			return i;

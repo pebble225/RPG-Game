@@ -1,5 +1,7 @@
 #include "utility/MapPoint.h"
 
+MapPoint::MapPoint() : x(0.0), y(0.0) {}
+
 MapPoint::MapPoint(double width)
 	: x(0.0), y(0.0), width(width) {}
 

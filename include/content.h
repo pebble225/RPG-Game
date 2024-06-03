@@ -9,6 +9,8 @@
 #include <cmath>
 #include <vector>
 
+#include "GlobalData.h"
+
 #include "gameInstance/SimpleTile.h"
 #include "gameInstance/chunkData.h"
 #include "gameInstance/chunkInstanceDB.h"
@@ -30,18 +32,16 @@ class content
 public:
 	GLFWwindow* window;
 
-	std::shared_ptr<chunkInstanceDB> cidb;
-	std::shared_ptr<RPGcamera> camera;
-
 	worldGenerator wg;
-
 	renderer r;
+
+	double worldDimensions[2];
+
+	GlobalData data;
 
 	content();
 
 	void init(int* screenDimension, GLFWwindow* window);
-
-
 
 	void Update();
 	void Render();

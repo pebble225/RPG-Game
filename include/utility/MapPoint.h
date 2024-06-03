@@ -9,8 +9,11 @@ struct MapPoint
 public:
 	double x, y, width;
 
+	MapPoint();
 	MapPoint(double width);
 	MapPoint(double x, double y, double width);
+
+	void setWidth();
 
 	void set(double x, double y);
 

@@ -1,5 +1,7 @@
 #include "content.h"
 
+chunkInstanceDB CHUNKINSTANCE_DB;
+
 content::content()
 {
 	
@@ -11,16 +13,16 @@ void content::init(int* screenDimension, GLFWwindow* window)
 
 	this->window = window;
 
-	cidb = std::make_shared<chunkInstanceDB>();
-
 	fileHandler::checkDirectory("./world");
 	fileHandler::checkDirectory("./world/chunkData");
 
+	worldDimensions[0] = 4096;
+	worldDimensions[1] = 2048;
+
+	data.initCamera(worldDimensions[0]);
+
 	//wg.setSeed(5346782);
 	//wg.orderGenerate();
-
-	camera = std::make_shared<RPGcamera>(screenDimension[0]);
-	r.shareCameraReference(camera);
 }
 
 void content::Update()

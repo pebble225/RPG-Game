@@ -37,9 +37,9 @@ void renderer::init(int* screenDimension)
 	glUseProgram(0);
 }
 
-void renderer::shareCameraReference(std::shared_ptr<RPGcamera> camera)
+void renderer::renderAllChunks()
 {
-	this->camera = camera;
+	
 }
 
 void renderer::renderQuad(float x, float y)

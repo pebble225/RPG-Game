@@ -17,7 +17,7 @@ private:
 public:
     int x, y;
 
-    std::unique_ptr<std::vector<SimpleTile>> tiles;
+    std::vector<SimpleTile> tiles;
 
     chunkData();
 
