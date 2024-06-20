@@ -21,7 +21,9 @@ private:
 	GLuint sp;
 
 public:
-	int shaderu_transform, shaderu_orthographic;
+	int shaderu_transform, shaderu_camera, shaderu_orthographic;
+
+	int shaderu_color;
 
 	ShaderProgram();
 

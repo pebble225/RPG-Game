@@ -51,8 +51,6 @@ int main()
 	int fps = 144;
 	double lastFrame = glfwGetTime();
 
-	double oneDouble = 0.99999999;
-
 	c.init(screenDimension, window);
 
 	while (!glfwWindowShouldClose(window))
@@ -63,7 +61,7 @@ int main()
 		delta += (nowTime-lastTime)*(double)tps;
 		lastTime = nowTime;
 
-		while (delta > oneDouble)
+		while (!(delta < 1))
 		{
 			delta -= 1.0;
 			c.Update();

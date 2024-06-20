@@ -10,7 +10,7 @@ bool chunkInstanceDB::checkForChunk(int x, int y)
 	{
 		chunkData* cd = &chunks.at(i);
 
-		if (x == cd->x && y == cd->y)
+		if (x == cd->getX() && y == cd->getY())
 			hit = true;
 	}
 
@@ -27,7 +27,7 @@ void chunkInstanceDB::loadChunkToInstance(int x, int y)
 	chunks.emplace_back();
 	chunkData* cd = &chunks.back();
 	cd->init(x, y);
-	//cd->loadFromFile();
+	cd->loadFromFile();
 }
 
 void chunkInstanceDB::freeChunkFromInstance(int x, int y)
@@ -40,17 +40,27 @@ void chunkInstanceDB::freeChunkFromInstance(int x, int y)
 	chunks.erase(chunks.begin() + index);
 }
 
+void updateToChunksAtPoint(RPGtransform position)
+{
+	
+}
+
 int chunkInstanceDB::indexOfChunkCoordinate(int x, int y)
 {
 	for (int i = 0; i < chunks.size(); i++)
 	{
 		chunkData* cd = &chunks.at(i);
 
-		if (x == cd->x && y == cd->y)
+		if (x == cd->getX() && y == cd->getY())
 			return i;
 	}
 
 	return -1;
+}
+
+void chunkInstanceDB::getChunk(chunkData** chunk, int index)
+{
+	*chunk = &chunks.at(index);
 }
 
 chunkInstanceDB::~chunkInstanceDB() {}

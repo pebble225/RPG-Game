@@ -6,6 +6,7 @@
 #include <utility>
 
 #include "chunkData.h"
+#include "../utility/RPGtransform.h"
 
 /*
 
@@ -22,14 +23,17 @@ public:
 	chunkInstanceDB();
 
 	bool checkForChunk(int x, int y);
-	
 
 	int totalLoadedChunks() const;
 	
 	void loadChunkToInstance(int x, int y);
 	void freeChunkFromInstance(int x, int y);
 
+	void updateToChunksAtPoint(RPGtransform position);
+
 	int indexOfChunkCoordinate(int x, int y);
+
+	void getChunk(chunkData** chunk, int index);
 
 	~chunkInstanceDB();
 };

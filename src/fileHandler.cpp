@@ -25,7 +25,8 @@ int fileHandler::writeChunkFile(int x, int y, SimpleTile* arr)
 	return 0;
 }
 
-int fileHandler::loadChunkFile(int x, int y, std::vector<SimpleTile>* arr)
+//maybe refractor x and y to chunkIndexX and chunkIndexY
+int fileHandler::loadChunkFile(int x, int y, std::vector<SimpleTile>* arr, std::vector<RPGtransform>* positions)
 {
 	std::ostringstream oss;
 
@@ -49,12 +50,26 @@ int fileHandler::loadChunkFile(int x, int y, std::vector<SimpleTile>* arr)
 	else
 		return 1;
 
+	RPGtransform chunkCoordinate(x * WORLDMAP_TILE_WIDTH_PER_CHUNK, y * WORLDMAP_TILE_WIDTH_PER_CHUNK);
+
+	for (int j = 0; j < WORLDMAP_TILE_WIDTH_PER_CHUNK; j++)
+	{
+		for (int i = 0; i < WORLDMAP_TILE_WIDTH_PER_CHUNK; i++)
+		{
+			//this isn't done, it still needs to be mutiplied by the tile size
+			RPGtransform t(chunkCoordinate.x + (double)i * (double)WORLDMAP_TILE_SIZE, chunkCoordinate.y + (double)j * (double)WORLDMAP_TILE_SIZE);
+
+			positions->push_back(t);
+		}
+	}
+
 	return 0;
 }
 
 bool fileHandler::folderExists(const std::string dir)
 {
 	char dir_cstr[1024];
+	dir_cstr[1023] = '\0';
 
 	strncpy(dir_cstr, dir.c_str(), sizeof(dir_cstr));
 

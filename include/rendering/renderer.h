@@ -11,9 +11,11 @@
 #include "mesh.h"
 #include "ShaderProgram.h"
 #include "../gameInstance/RPGcamera.h"
-#include "../utility/Vec2D.h"
 #include "../gameInstance/chunkInstanceDB.h"
 #include "../gameInstance/chunkData.h"
+#include "../gameInstance/SimpleTile.h"
+
+#include "../gameInstance/worldMapConstants.h"
 
 //mixed operator
 class renderer
@@ -35,7 +37,7 @@ public:
 
 	void renderAllChunks();
 
-	void renderQuad(float x, float y);
+	void renderQuad(float x, float y, float r, float g, float b);
 
 	~renderer();
 };

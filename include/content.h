@@ -9,8 +9,6 @@
 #include <cmath>
 #include <vector>
 
-#include "GlobalData.h"
-
 #include "gameInstance/SimpleTile.h"
 #include "gameInstance/chunkData.h"
 #include "gameInstance/chunkInstanceDB.h"
@@ -21,7 +19,6 @@
 #include "rendering/renderer.h"
 
 #include "utility/RPGrandom.h"
-#include "utility/MapPoint.h"
 
 #include "worldGen/heightmap.h"
 #include "worldGen/worldGenerator.h"
@@ -37,11 +34,14 @@ public:
 
 	double worldDimensions[2];
 
-	GlobalData data;
+	chunkInstanceDB cidb;
+	RPGcamera camera;
 
 	content();
 
 	void init(int* screenDimension, GLFWwindow* window);
+
+	void distribute();
 
 	void Update();
 	void Render();

@@ -29,7 +29,9 @@ void renderer::init(int* screenDimension)
 	sp.use();
 
 	sp.shaderu_transform = sp.getUniform("transform");
+	sp.shaderu_camera = sp.getUniform("camera");
 	sp.shaderu_orthographic = sp.getUniform("orthographic");
+	sp.shaderu_color = sp.getUniform("inColor");
 
 	orthographic = glm::ortho(-(float)screenDimension[0]/2, (float)screenDimension[0]/2, -(float)screenDimension[1]/2, (float)screenDimension[1]/2);
 	sp.setUniformMat4(sp.shaderu_orthographic, orthographic);
@@ -39,22 +41,40 @@ void renderer::init(int* screenDimension)
 
 void renderer::renderAllChunks()
 {
-	
+	for (int chunkIndex = 0; chunkIndex < cidb->totalLoadedChunks(); chunkIndex++)
+	{
+		chunkData* chunk;
+		cidb->getChunk(&chunk, chunkIndex);
+
+		for (int tileIndex = 0; tileIndex < WORLDMAP_TOTAL_TILES_PER_CHUNK; tileIndex++)
+		{
+			SimpleTile t = chunk->getTileAt(tileIndex);
+			RPGtransform position = chunk->getPositionAt(tileIndex);
+
+			
+			if (t == SIMPLETILEID_GRASS_VARIANT_00)
+			{
+				renderQuad(position.x, position.y, 30, 110, 30);
+			}
+		}
+	}
 }
 
-void renderer::renderQuad(float x, float y)
+void renderer::renderQuad(float x, float y, float r, float g, float b)
 {
 	glm::mat4 m = glm::mat4(1.0f);
 	m = glm::translate(m, glm::vec3(x, y, 0.0f));
 	m = glm::rotate(m, 0.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 	m = glm::rotate(m, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 	m = glm::rotate(m, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-	m = glm::scale(m, glm::vec3(100.0f, 100.0f, 1.0f));
+	m = glm::scale(m, glm::vec3(WORLDMAP_TILE_SIZE - 1.0f, WORLDMAP_TILE_SIZE - 1.0f, 1.0f));
 
 	sp.use();
 
 	sp.setUniformMat4(sp.shaderu_orthographic, orthographic);
+	sp.setUniformMat4(sp.shaderu_camera, camera->matrix);
 	sp.setUniformMat4(sp.shaderu_transform, m);
+	sp.setUniform3f(sp.shaderu_color, r / 256.0f, g / 256.0f, b / 256.0f);
 
 	standardMesh.bindVAO();
 	standardMesh.draw();
