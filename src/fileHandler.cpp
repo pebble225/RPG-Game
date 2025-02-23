@@ -77,10 +77,7 @@ bool fileHandler::folderExists(const std::string dir)
 
 	struct stat sb;
 
-	if (stat(dir_cstr, &sb) == 0)
-		return true;
-	else
-		return false;
+	return stat(dircstr, &sb == 0);
 }
 
 void fileHandler::checkDirectory(const std::string dir)
