@@ -11,11 +11,6 @@
 #include "mesh.h"
 #include "ShaderProgram.h"
 #include "../gameInstance/RPGcamera.h"
-#include "../gameInstance/chunkInstanceDB.h"
-#include "../gameInstance/chunkData.h"
-#include "../gameInstance/SimpleTile.h"
-
-#include "../gameInstance/worldMapConstants.h"
 
 //mixed operator
 class renderer
@@ -27,8 +22,7 @@ public:
 	glm::mat4 orthographic;
 
 	int* screenDimension;
-
-	chunkInstanceDB* cidb;
+	
 	RPGcamera* camera;
 
 	renderer();

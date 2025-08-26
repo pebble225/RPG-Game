@@ -39,27 +39,6 @@ void renderer::init(int* screenDimension)
 	glUseProgram(0);
 }
 
-void renderer::renderAllChunks()
-{
-	for (int chunkIndex = 0; chunkIndex < cidb->totalLoadedChunks(); chunkIndex++)
-	{
-		chunkData* chunk;
-		cidb->getChunk(&chunk, chunkIndex);
-
-		for (int tileIndex = 0; tileIndex < WORLDMAP_TOTAL_TILES_PER_CHUNK; tileIndex++)
-		{
-			SimpleTile t = chunk->getTileAt(tileIndex);
-			RPGtransform position = chunk->getPositionAt(tileIndex);
-
-			
-			if (t == SIMPLETILEID_GRASS_VARIANT_00)
-			{
-				renderQuad(position.x, position.y, 30, 110, 30);
-			}
-		}
-	}
-}
-
 void renderer::renderQuad(float x, float y, float r, float g, float b)
 {
 	glm::mat4 m = glm::mat4(1.0f);
@@ -67,7 +46,7 @@ void renderer::renderQuad(float x, float y, float r, float g, float b)
 	m = glm::rotate(m, 0.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 	m = glm::rotate(m, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 	m = glm::rotate(m, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-	m = glm::scale(m, glm::vec3(WORLDMAP_TILE_SIZE - 1.0f, WORLDMAP_TILE_SIZE - 1.0f, 1.0f));
+	m = glm::scale(m, glm::vec3(1.0f,1.0f, 1.0f));
 
 	sp.use();
 

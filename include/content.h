@@ -9,19 +9,7 @@
 #include <cmath>
 #include <vector>
 
-#include "gameInstance/SimpleTile.h"
-#include "gameInstance/chunkData.h"
-#include "gameInstance/chunkInstanceDB.h"
-#include "gameInstance/RPGcamera.h"
-
-#include "fileHandling/fileHandler.h"
-
 #include "rendering/renderer.h"
-
-#include "utility/RPGrandom.h"
-
-#include "worldGen/heightmap.h"
-#include "worldGen/worldGenerator.h"
 
 //overhead
 class content
@@ -29,12 +17,10 @@ class content
 public:
 	GLFWwindow* window;
 
-	worldGenerator wg;
 	renderer r;
 
 	double worldDimensions[2];
 
-	chunkInstanceDB cidb;
 	RPGcamera camera;
 
 	content();
